@@ -16,3 +16,10 @@ argo-cd:
         - type: helm
           name: argo-cd
           url: https://argoproj.github.io/argo-helm
+        - type: git@github.com:pmackey2/argo-cd-test.git
+          name: github-ssh
+          sshPrivateKeySecret:
+            name: github-secret
+            key: sshPrivateKey
+        - type: https://github.com/pmackey2/argo-cd-test.git
+          name: github-http

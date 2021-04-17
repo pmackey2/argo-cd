@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     path: apps/
-    repoURL: git@github.com:pmackey2/argo-cd-test.git
+    repoURL: https://github.com/pmackey2/argo-cd-test.git
     targetRevision: HEAD
   syncPolicy:
     automated:

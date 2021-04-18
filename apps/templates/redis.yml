@@ -19,7 +19,7 @@ spec:
             password: password
     enabled: true
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 13.0.2
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true

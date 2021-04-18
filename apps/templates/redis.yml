@@ -20,7 +20,7 @@ spec:
     enabled: true
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 6.2.1
-    path: /redis
+    path: bitnami/redis
   syncPolicy:
     automated:
       prune: true

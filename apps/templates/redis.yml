@@ -19,7 +19,7 @@ spec:
             password: password
     enabled: true
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: HEAD
+    targetRevision: 6.2.1
   syncPolicy:
     automated:
       prune: true

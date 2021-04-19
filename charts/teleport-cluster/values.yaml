@@ -6,7 +6,7 @@
 # This value cannot be changed after your cluster starts.
 # Use fully qualified domain name to access your cluster,
 # for example: teleport.example.com
-clusterName:
+clusterName: teleport.chlg.sputnik.ves.is
 
 ##################################################
 # Values that you may need to change.

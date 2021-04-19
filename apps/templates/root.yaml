@@ -12,7 +12,7 @@ spec:
   source:
     path: apps/
     repoURL: https://github.com/pmackey2/argo-cd-test.git
-    targetRevision: home/HEAD
+    targetRevision: home
   syncPolicy:
     automated:
       prune: true

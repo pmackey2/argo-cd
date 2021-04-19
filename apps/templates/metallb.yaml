@@ -32,7 +32,7 @@ spec:
             auto-assign: true
     enabled: true
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 0.9.6
+    targetRevision: 2.3.5
     path: bitnami/metallb
   syncPolicy:
     automated:

@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis
+  namespace: default
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: redis
+  project: default
+  source:
+    chart: redis
+    helm:
+      values: |
+        global:
+          redis:
+            password: password
+    enabled: true
+    repoURL: https://github.com/bitnami/charts
+    targetRevision: HEAD
+    path: bitnami/redis
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

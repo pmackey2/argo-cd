@@ -11,6 +11,7 @@ spec:
     namespace: teleport
   project: default
   source:
+    enabled: false
     path: charts/teleport-cluster
     repoURL: https://github.com/pmackey2/argo-cd-test
     targetRevision: HEAD

@@ -11,13 +11,9 @@ spec:
     namespace: teleport
   project: default
   source:
-    chart: teleport-cluster
-    helm:
-      values: |
-        clusterName: teleport.chlg.sputnik.ves.is
-    enabled: true
-    repoURL: https://charts.releases.teleport.dev
-    targetRevision: 6.0.0
+    path: charts/teleport-cluster
+    repoURL: https://github.com/pmackey2/argo-cd-test
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true

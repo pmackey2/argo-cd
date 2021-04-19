@@ -17,6 +17,7 @@ spec:
         clusterName: teleport.chlg.sputnik.ves.is
     enabled: true
     repoURL: https://charts.releases.teleport.dev
+    targetRevision: 6.0.0
   syncPolicy:
     automated:
       prune: true

@@ -10,7 +10,7 @@ spec:
   # Source of the application manifests
   source:
     repoURL: https://github.com/pmackey2/argo-cd-test.git
-    targetRevision: HEAD
+    targetRevision: home/HEAD
     path: nginx
 
   destination:

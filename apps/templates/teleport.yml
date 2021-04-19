@@ -14,7 +14,7 @@ spec:
     enabled: false
     path: charts/teleport-cluster
     repoURL: https://github.com/pmackey2/argo-cd-test
-    targetRevision: HEAD
+    targetRevision: home/HEAD
   syncPolicy:
     automated:
       prune: true

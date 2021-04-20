@@ -55,6 +55,9 @@ spec:
           readOnly: true
         - mountPath: /var/lib/teleport
           name: "data"
+        - mountPath: /tls
+          name: "certs"
+          readOnly: true
       volumes:
 {{- if .Values.enterprise }}
       - name: license
@@ -67,4 +70,7 @@ spec:
       - name: "data"
         persistentVolumeClaim:
           claimName: {{ .Release.Name }}
+      - name: "certs"
+        secret:
+          secretName: {{ .Release.Name }}-cert
       serviceAccountName: {{ .Release.Name }}

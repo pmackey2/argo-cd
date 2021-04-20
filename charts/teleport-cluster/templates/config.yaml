@@ -12,6 +12,7 @@ data:
     auth_service:
       enabled: true
       cluster_name: {{ required "clusterName is required in chart values" .Values.clusterName }}
+      listen_addr: 0.0.0.0:3025
 {{- if .Values.enterprise }}
       license_file: '/var/lib/license/license-enterprise.pem'
 {{- end }}
@@ -25,6 +26,9 @@ data:
     proxy_service:
       public_addr: '{{ required "clusterName is required in chart values" .Values.clusterName }}:443'
       kube_listen_addr: 0.0.0.0:3026
+      listen_addr: 0.0.0.0:3023
+      web_listen_addr: 0.0.0.0:3080
+      tunnel_listen_addr: 0.0.0.0:3024
       enabled: true
       {{- if .Values.acme }}
       acme:
@@ -34,6 +38,10 @@ data:
         uri: {{ .Values.acmeURI }}
         {{- end }}
       {{- end }}
+      https_keypairs:
+      - key_file: /tls/tls.key
+        cert_file: /tls/tls.crt
+
     ssh_service:
       enabled: false
 {{- end -}}

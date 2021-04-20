@@ -16,13 +16,17 @@ spec:
     port: 3023
     targetPort: 3023
     protocol: TCP
-  - name: k8s
-    port: 3026
-    targetPort: 3026
-    protocol: TCP
   - name: sshtun
     port: 3024
     targetPort: 3024
+    protocol: TCP
+  - name: auth
+    port: 3025
+    targetPort: 3025
+    protocol: TCP
+  - name: k8s
+    port: 3026
+    targetPort: 3026
     protocol: TCP
   selector:
     app: {{ .Release.Name }}

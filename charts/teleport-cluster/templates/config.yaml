@@ -13,6 +13,7 @@ data:
       enabled: true
       cluster_name: {{ required "clusterName is required in chart values" .Values.clusterName }}
       listen_addr: 0.0.0.0:3025
+      public_addr: ["{{ .Values.clusterName }}"]
 {{- if .Values.enterprise }}
       license_file: '/var/lib/license/license-enterprise.pem'
 {{- end }}

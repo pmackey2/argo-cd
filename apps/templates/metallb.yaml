@@ -14,6 +14,8 @@ spec:
     chart: metallb
     helm:
       values: |
+        psp:
+          create: true
         configInline:
           address-pools:
           - name: lb-pool-01

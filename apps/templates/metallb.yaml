@@ -21,7 +21,17 @@ spec:
           - name: lb-pool-01
             protocol: layer2
             addresses:
-              - 172.23.40.140-172.23.40.149
+              - 172.23.40.140/32
+              - 172.23.40.141/32
+              - 172.23.40.142/32
+              - 172.23.40.143/32
+              - 172.23.40.144/32
+              - 172.23.40.145/32
+              - 172.23.40.146/32
+              - 172.23.40.147/32
+              - 172.23.40.148/32
+              - 172.23.40.149/32
+            auto-assign: true
     enabled: true
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 2.3.5

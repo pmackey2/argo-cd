@@ -25,12 +25,6 @@ spec:
           create: true
         serviceAccount:
           create: true
-        redis:
-          serviceAccountName: "redis-sa"
-        serviceAccount:
-          name: "redis-sa"
-        pdb:
-          create: true
     enabled: true
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 13.0.1

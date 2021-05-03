@@ -25,6 +25,8 @@ spec:
           create: true
         serviceAccount:
           create: true
+        redis:
+          serviceAccountName: "redis-sa"
         serviceAccount:
           name: "redis-sa"
         pdb:

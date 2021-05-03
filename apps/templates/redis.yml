@@ -17,6 +17,12 @@ spec:
         global:
           redis:
             password: password
+        networkPolicy.enabled:   true
+        podSecurityPolicy.create:    true
+        rbac.create: true
+        serviceAccount.create: true
+        serviceAccount.name: "redis-sa"
+        pdb.create: true
     enabled: true
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 13.0.1

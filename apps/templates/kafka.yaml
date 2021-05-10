@@ -1,10 +1,11 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kafka
   namespace: default
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -23,16 +24,20 @@ spec:
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 12.17.6
     path: bitnami/kafka
+  ignoreDifferences:
+    - group: apps
+      kind: Service
+      jsonPointers:
+        - /spec/ports/nodePort
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
     retry:
       limit: 5
       backoff:
         duration: 5s
         factor: 2
         maxDuration: 3m
-

@@ -25,8 +25,7 @@ spec:
     targetRevision: 12.17.6
     path: bitnami/kafka
   ignoreDifferences:
-    - group: apps
-      kind: Service
+    - kind: Service
       jsonPointers:
         - /spec/ports
   syncPolicy:

@@ -28,7 +28,7 @@ spec:
     - group: apps
       kind: Service
       jsonPointers:
-        - /spec/ports/nodePort
+        - /spec/ports
   syncPolicy:
     automated:
       prune: true

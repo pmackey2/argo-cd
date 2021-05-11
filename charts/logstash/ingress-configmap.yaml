@@ -1,0 +1,50 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logstash-ingress
+  namespace: logstash
+data:
+  pipelines.yml: |-
+    - pipeline.id: output
+      path.config: "/usr/share/logstash/pipeline/output.conf"
+    - pipeline.id: intake
+      path.config: "/usr/share/logstash/pipeline/intake.conf"
+
+  output.conf: |-
+    input {
+      pipeline {
+        address => output
+      }
+    }
+    output {
+      kafka {
+        codec => json
+        topic_id => "logstash-ingress"
+        bootstrap_servers => "kafka.kafka.svc.cluster.local:9092"
+      }
+    }
+
+  intake.conf: |-
+    input {
+      syslog {
+        port => 6010
+      }
+    }
+
+    filter {
+      # Construct a fingerprint to be used to remove duplicates
+      fingerprint {
+        source => [ "message" ]
+        method => "SHA1"
+        key => "7f637fa4844d20c7eb406ffe5cd350a7"
+        concatenate_sources => true
+        target => "[@metadata][fingerprint]"
+      }
+    }
+
+    output {
+      pipeline {
+        send_to => output
+      }
+    }

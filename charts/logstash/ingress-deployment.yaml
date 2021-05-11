@@ -1,0 +1,79 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logstash-ingress
+  namespace: logstash
+  labels:
+    workload.user.cattle.io/workloadselector: deployment-default-logstash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-default-logstash
+
+  template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-default-logstash
+        app: logstash-ingress
+    spec:
+      terminationGracePeriodSeconds: 3
+      volumes:
+        - name: pipelines
+          configMap:
+            name: logstash-ingress
+
+      containers:
+        # Logstash
+        - name: logstash
+          image: asia.gcr.io/principal-storm-727/logstash:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CONFIG_RELOAD_AUTOMATIC
+              value: "true"
+
+          ports:
+            - name: syslog-tcp
+              containerPort: 6010
+              protocol: TCP
+            - name: monitoring-api
+              containerPort: 9600
+              protocol: TCP
+
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 9600
+              scheme: HTTP
+            initialDelaySeconds: 300
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 9600
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            successThreshold: 3
+            timeoutSeconds: 5
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: "1"
+              memory: 4096Mi
+
+          volumeMounts:
+            - name: pipelines
+              mountPath: "/usr/share/logstash/config/pipelines.yml"
+              subPath: pipelines.yml
+            - name: pipelines
+              mountPath: "/usr/share/logstash/pipeline/"

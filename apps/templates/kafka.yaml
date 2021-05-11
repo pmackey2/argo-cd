@@ -23,8 +23,12 @@ spec:
         provisioning:
             enabled: true
             topics:
-              - logstash-egress
-              - logstash-ingress
+              - name: "logstash-egress"
+                partitions: 1
+                replicationFactor: 1
+              - name: "logstash-ingress"
+                partitions: 1
+                replicationFactor: 1
     enabled: true
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 12.17.6

@@ -43,7 +43,7 @@ spec:
               enabled: true
     enabled: true
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 2.3.5
+    targetRevision: 2.3.6
     path: bitnami/metallb
   syncPolicy:
     automated:

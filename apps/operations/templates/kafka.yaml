@@ -21,7 +21,7 @@ spec:
           enabled: true
           service:
             loadBalancerIPs:
-              - 172.23.40.141
+              - 172.23.40.145
         provisioning:
             enabled: true
             topics:

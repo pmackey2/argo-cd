@@ -10,7 +10,7 @@ metadata:
 spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
-  loadBalancerIP: 172.23.40.142
+  #loadBalancerIP: 172.23.40.142
 
   sessionAffinity: None
   selector:

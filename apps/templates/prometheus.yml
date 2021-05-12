@@ -14,14 +14,20 @@ spec:
     chart: prometheus
     helm:
       values: |
+        podSecurityPolicy:
+          enabled: false
         pushgateway:
           enabled: false
         nodeExporter:
           enabled: false
         alertmanager:
+          ingress:
+            enabled: true
           persistentVolume:
             enabled: false
         server:
+          ingress:
+            enabled: true
           persistentVolume:
             enabled: false
     enabled: true

@@ -35,10 +35,12 @@ spec:
               auto-assign: true
         speaker:
           prometheus:
-            serviceMonitor: enabled
+            serviceMonitor:
+            enabled: true
         controller:
           prometheus:
-            serviceMonitor: enabled
+            serviceMonitor:
+            enabled: true
     enabled: true
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 2.3.5

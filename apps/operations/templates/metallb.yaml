@@ -1,0 +1,57 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: operations-metallb
+  namespace: default
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  destination:
+    server: https://rke2-ops-server-1.chlg.sputnik.ves.is:6443
+    namespace: metallb
+
+  source:
+    chart: metallb
+    helm:
+      values: |
+        psp:
+          create: true
+        configInline:
+          address-pools:
+            - name: lb-pool-01
+              protocol: layer2
+              addresses:
+                - 172.23.40.145/32
+                - 172.23.40.146/32
+                - 172.23.40.147/32
+                - 172.23.40.148/32
+                - 172.23.40.149/32
+              auto-assign: true
+        speaker:
+          prometheus:
+            serviceMonitor:
+              enabled: true
+        controller:
+          prometheus:
+            serviceMonitor:
+              enabled: true
+    enabled: true
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 2.3.6
+    path: bitnami/metallb
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

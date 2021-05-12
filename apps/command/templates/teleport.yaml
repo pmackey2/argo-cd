@@ -1,20 +1,33 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-cd
+  name: teleport
   namespace: default
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
+  project: default
+
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
-  project: default
+    namespace: teleport
+
   source:
-    path: charts/argo-cd
+    enabled: false
+    path: charts/teleport-cluster
     repoURL: https://github.com/pmackey2/argo-cd-test
     targetRevision: HEAD
+
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

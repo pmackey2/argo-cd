@@ -1,29 +1,23 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: logstash
-  namespace: default
+  name: operations-root
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
 
+  destination:
+    server: https://rke2-ops-server-1.chlg.sputnik.ves.is:6443
+    namespace: default
+
   source:
+    path: apps/
     repoURL: https://github.com/pmackey2/argo-cd-test.git
     targetRevision: HEAD
-    path: charts/logstash
-
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: logstash
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-      allowEmpty: false
-    syncOptions:
-      - Validate=true
-      - CreateNamespace=true
-      - PrunePropagationPolicy=foreground
-      - PruneLast=true

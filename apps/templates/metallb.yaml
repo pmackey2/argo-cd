@@ -36,11 +36,11 @@ spec:
         speaker:
           prometheus:
             serviceMonitor:
-            enabled: true
+              enabled: true
         controller:
           prometheus:
             serviceMonitor:
-            enabled: true
+              enabled: true
     enabled: true
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 2.3.5

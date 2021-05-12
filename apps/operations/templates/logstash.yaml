@@ -10,7 +10,7 @@ spec:
   project: default
 
   destination:
-    server: https://rke2-ops-server-1.chlg.sputnik.ves.is:6443
+    server: https://docker.vodalab.net:8443/k8s/clusters/c-ff8zs
     namespace: logstash
 
   source:

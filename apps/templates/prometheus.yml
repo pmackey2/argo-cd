@@ -23,11 +23,15 @@ spec:
         alertmanager:
           ingress:
             enabled: true
+            hosts:
+              - alertmanager.chlg.sputnik.ves.is
           persistentVolume:
             enabled: false
         server:
           ingress:
             enabled: true
+            hosts:
+              - prometheus.chlg.sputnik.ves.is
           persistentVolume:
             enabled: false
     enabled: true

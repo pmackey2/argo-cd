@@ -9,14 +9,14 @@ metadata:
 spec:
   project: default
 
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: nginx-test
+
   source:
     repoURL: https://github.com/pmackey2/argo-cd-test.git
     targetRevision: HEAD
     path: charts/nginx
-
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: nginx-test
 
   syncPolicy:
     automated:

@@ -1,0 +1,55 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: operations-kafka
+  namespace: default
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: kafka
+
+  source:
+    chart: kafka
+    helm:
+      values: |
+        externalAccess:
+          enabled: true
+          service:
+            loadBalancerIPs:
+              - 172.23.40.145
+        provisioning:
+            enabled: true
+            topics:
+              - name: "logstash-egress"
+                partitions: 1
+                replicationFactor: 1
+              - name: "logstash-ingress"
+                partitions: 1
+                replicationFactor: 1
+    enabled: true
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 12.17.6
+    path: bitnami/kafka
+
+  ignoreDifferences:
+    - kind: Service
+      jsonPointers:
+        - /spec/ports/0/nodePort
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

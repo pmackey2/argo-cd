@@ -2,7 +2,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: operations-root
+  name: operations-logstash
+  namespace: default
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -10,14 +11,20 @@ spec:
 
   destination:
     server: {{ .Values.spec.destination.server }}
-    namespace: default
+    namespace: logstash
 
   source:
-    path: apps/operations/
     repoURL: https://github.com/pmackey2/argo-cd-test.git
     targetRevision: HEAD
+    path: charts/logstash
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - Validate=true
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true

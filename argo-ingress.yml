@@ -1,17 +1,19 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: argocd-ui
   namespace: default
 spec:
   rules:
-  - host: rke2-cmd-agent-1.chlg.spuntik.ves.is
+  - host: rke2-cmd-agent-1.chlg.sputnik.ves.is
     http:
       paths:
       - backend:
-          serviceName: argo-cd-argocd-server
-          servicePort: server
+          service:
+            name: argo-cd-argocd-server
+            port:
+              name: server
         pathType: ImplementationSpecific
   tls:
   - hosts:
-    - rke2-cmd-agent-1.chlg.spuntik.ves.is
+    - rke2-cmd-agent-1.chlg.sputnik.ves.is

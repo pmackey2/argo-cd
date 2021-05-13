@@ -1,0 +1,4 @@
+spec:
+  destination:
+    server: https://docker.vodalab.net:8443/k8s/clusters/c-ff8zs
+

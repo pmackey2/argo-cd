@@ -1,6 +1,6 @@
 spec:
   destination:
-    server: https://rke2-ops-server-1.chlg.sputnik.ves.is:6443
-    #server: https://docker.vodalab.net:8443/k8s/clusters/c-ff8zs
+    #server: https://rke2-ops-server-1.chlg.sputnik.ves.is:6443
+    server: https://docker.vodalab.net:8443/k8s/clusters/c-c4ckq
     #server: https://kubernetes.default.svc
 

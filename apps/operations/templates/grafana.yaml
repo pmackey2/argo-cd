@@ -40,7 +40,8 @@ spec:
               type: prometheus
               url: https://fstc-m00-docker-01.vodalab.net
               isDefault: true
-              skip_verify: true
+              jsonData:
+                tlsSkipVerify: true
 
         admin:
           existingSecret: "grafana-creds"

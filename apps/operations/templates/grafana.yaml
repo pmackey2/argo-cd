@@ -48,9 +48,6 @@ spec:
                 isDefault: true
                 jsonData:
                   tlsSkipVerify: true
-        sidecar:
-          datasources:
-            enabled: true
         admin:
           existingSecret: "grafana-creds"
           userKey: admin-user

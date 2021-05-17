@@ -37,7 +37,7 @@ spec:
           - grafana-worldmap-panel
           - natel-discrete-panel
           - grafana-polystat-panel
-          - grafana-image-renderer
+          #  - grafana-image-renderer
 
         extraConfigmapMounts:
            - name: grafana-certs

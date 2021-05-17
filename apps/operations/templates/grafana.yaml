@@ -1,0 +1,55 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: Grafana
+spec:
+  destination:
+    name: operations
+    namespace: default
+
+  source:
+    repoURL: 'https://grafana.github.io/helm-charts'
+    targetRevision: '6.9.1'
+    chart: grafana
+    helm:
+      values: |
+        extraConfigmapMounts: []
+          - name: certs-configmap
+            mountPath: /etc/grafana/ssl/
+            subPath: certificates.crt # (optional)
+            configMap: certs-configmap
+            readOnly: true
+        
+        podPortName: grafana
+        
+        serviceMonitor:
+          enabled: false
+        
+        ingress:
+          enabled: false
+        
+        # Use an existing secret for the admin user.
+        admin:
+          existingSecret: "grafana-creds"
+          userKey: admin-user
+          passwordKey: admin-password
+        
+        datasources: {}
+          datasources.yaml:
+            apiVersion: 1
+            datasources:
+            - name: Prometheus
+              type: prometheus
+              url: http://docker.vodalab.net:9090
+              access: proxy
+              isDefault: true
+        
+        imageRenderer:
+          enabled: true
+        
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

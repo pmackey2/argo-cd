@@ -38,10 +38,7 @@ spec:
           - natel-discrete-panel
           - grafana-polystat-panel
 
-        sidecar:
-          dashboards:
-            enabled: true
-            envFromSecret: grafana-datasource-secrets
+        envFromSecret: grafana-datasource-secrets
 
         datasources:
           datasources.yaml:

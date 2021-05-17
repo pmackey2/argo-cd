@@ -32,6 +32,15 @@ spec:
           - natel-discrete-panel
           - grafana-polystat-panel
 
+        datasources:
+          datasources.yaml:
+            apiVersion: 1
+            datasources:
+            - name: Prometheus
+              type: prometheus
+              url: https://fstc-m00-docker-01.vodalab.net
+              isDefault: true
+
         admin:
           existingSecret: "grafana-creds"
           userKey: admin-user

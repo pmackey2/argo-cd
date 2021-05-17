@@ -38,6 +38,11 @@ spec:
           - natel-discrete-panel
           - grafana-polystat-panel
 
+        sidecar:
+          dashboards:
+            enabled: true
+            envFromSecret: grafana-dashboard-secrets
+
         datasources:
           datasources.yaml:
             apiVersion: 1
@@ -46,6 +51,15 @@ spec:
                 type: prometheus
                 url: https://fstc-m00-docker-01.vodalab.net
                 isDefault: true
+                jsonData:
+                  tlsSkipVerify: true
+              - name: HNZC_Network
+                type: influxdb
+                url: https://fstc-influxdb.vodalab.net:8086
+                database: HNZC_Network
+                basicAuth: true
+                basicAuthUser: $INFLUXDB_USERNAME
+                basicAuthPassword: $INFLUXDB_PASSWORD
                 jsonData:
                   tlsSkipVerify: true
         admin:

@@ -38,12 +38,38 @@ spec:
           - natel-discrete-panel
           - grafana-polystat-panel
 
-        envFromSecret: grafana-datasource-secrets
+        extraConfigmapMounts:
+           - name: grafana-certs
+             mountPath: /etc/grafana/ldap/
+             configMap: grafana-certs
+             readOnly: true
 
         ldap:
           enabled: true
-          existingSecret: grafana-ldap-secrets
-
+          config: |- 
+            [[servers]]
+            host = "203.97.43.6 203.97.43.37"
+            port = 636
+            use_ssl = true
+            start_tls = false
+            ssl_skip_verify = false
+            root_ca_cert = "/etc/grafana/ldap/ldap.crt"
+            search_filter = "(sAMAccountName=%s)"
+            search_base_dns = ["OU=MGMT_Users,DC=mgmt,DC=dmzglobal,DC=net"]
+            
+            [servers.attributes]
+            name = "givenName"
+            surname = "sn"
+            username = "cn"
+            email = "USERPRINCIPALNAME"
+            member_of = "MEMBEROF"
+            
+            [[servers.group_mappings]]
+            group_dn = "CN=GR_VDO_Users,OU=MGMT_Security Groups,DC=mgmt,DC=dmzglobal,DC=net"
+            org_role = "Admin"
+            grafana_admin = true
+            org_id = 1
+ 
         datasources:
           datasources.yaml:
             apiVersion: 1

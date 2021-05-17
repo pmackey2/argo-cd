@@ -14,6 +14,10 @@ spec:
     chart: grafana
     helm:
       values: |
+        replicas: 2
+        persistence:
+          enabled: true
+
         serviceMonitor:
           enabled: true
 

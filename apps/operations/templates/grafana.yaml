@@ -44,6 +44,12 @@ spec:
              configMap: grafana-certs
              readOnly: true
 
+        grafana.ini:
+          auth.ldap:
+            enabled: true
+            allow_sign_up: true
+            config_file: /etc/grafana/ldap.toml
+
         ldap:
           enabled: true
           config: |- 

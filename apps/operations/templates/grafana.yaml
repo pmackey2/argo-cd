@@ -25,19 +25,6 @@ spec:
           userKey: admin-user
           passwordKey: admin-password
 
-        datasources:
-          datasources.yaml:
-            apiVersion: 1
-            datasources:
-            - name: Prometheus
-              type: prometheus
-              url: http://docker.vodalab.net:9090
-              access: proxy
-              isDefault: true
-
-        imageRenderer:
-          enabled: true
-
   project: default
   syncPolicy:
     automated:

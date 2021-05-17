@@ -41,7 +41,7 @@ spec:
         sidecar:
           dashboards:
             enabled: true
-            envFromSecret: grafana-dashboard-secrets
+            envFromSecret: grafana-datasource-secrets
 
         datasources:
           datasources.yaml:

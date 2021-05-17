@@ -21,7 +21,7 @@ spec:
           enabled: true
           hosts:
             - grafana.chlg.sputnik.ves.is
-          tls: []
+          tls:
             - secretName: grafana-cert
               hosts:
                 - grafana.chlg.sputnik.ves.is

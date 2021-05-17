@@ -52,7 +52,7 @@ spec:
                   tlsSkipVerify: true
               - name: HNZC_Network
                 type: influxdb
-                url: https://fstc-influxdb.vodalab.net:8086
+                url: https://fstc-influxdb.vodalab.net
                 database: HNZC_Network
                 basicAuth: true
                 basicAuthUser: $INFLUXDB_USERNAME

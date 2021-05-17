@@ -17,6 +17,8 @@ spec:
         replicas: 1
         persistence:
           enabled: true
+          accessModes:
+            - ReadWriteMany
 
         serviceMonitor:
           enabled: true

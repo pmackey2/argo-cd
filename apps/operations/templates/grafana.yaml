@@ -40,12 +40,17 @@ spec:
           datasources.yaml:
             apiVersion: 1
             datasources:
-            - name: Prometheus
-              type: prometheus
-              url: https://fstc-m00-docker-01.vodalab.net
-              isDefault: true
-              jsonData:
-                tlsSkipVerify: true
+              - name: Prometheus
+                type: prometheus
+                url: https://fstc-m00-docker-01.vodalab.net
+                isDefault: true
+                jsonData:
+                  tlsSkipVerify: true
+              - name: InfluxDB
+                type: influxdb
+                url: https://fstc-influxdb.vodalab.net:8086
+                jsonData:
+                  tlsSkipVerify: true
 
         admin:
           existingSecret: "grafana-creds"

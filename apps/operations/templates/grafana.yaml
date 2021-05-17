@@ -14,7 +14,7 @@ spec:
     chart: grafana
     helm:
       values: |
-        replicas: 2
+        replicas: 1
         persistence:
           enabled: true
 

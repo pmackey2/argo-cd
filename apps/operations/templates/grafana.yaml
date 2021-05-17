@@ -46,9 +46,13 @@ spec:
                 isDefault: true
                 jsonData:
                   tlsSkipVerify: true
-              - name: InfluxDB
+              - name: HNZC_Network
                 type: influxdb
                 url: https://fstc-influxdb.vodalab.net:8086
+                database: HNZC_Network
+                basicAuth: true
+                basicAuthUser: admin
+                basicAuthPassword: password
                 jsonData:
                   tlsSkipVerify: true
 

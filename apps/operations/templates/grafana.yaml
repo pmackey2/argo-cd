@@ -26,6 +26,12 @@ spec:
               hosts:
                 - grafana.chlg.sputnik.ves.is
 
+        plugins:
+          - marcusolsson-json-datasource
+          - grafana-worldmap-panel
+          - natel-discrete-panel
+          - grafana-polystat-panel
+
         admin:
           existingSecret: "grafana-creds"
           userKey: admin-user

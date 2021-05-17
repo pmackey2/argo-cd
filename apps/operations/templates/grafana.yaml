@@ -19,6 +19,12 @@ spec:
 
         ingress:
           enabled: true
+          hosts:
+            - grafana.chlg.sputnik.ves.is
+          tls: []
+            - secretName: grafana-cert
+              hosts:
+                - grafana.chlg.sputnik.ves.is
 
         admin:
           existingSecret: "grafana-creds"

@@ -14,22 +14,12 @@ spec:
     chart: grafana
     helm:
       values: |
-        extraConfigmapMounts: []
-          - name: certs-configmap
-            mountPath: /etc/grafana/ssl/
-            subPath: certificates.crt # (optional)
-            configMap: certs-configmap
-            readOnly: true
-        
-        podPortName: grafana
-        
         serviceMonitor:
           enabled: false
         
         ingress:
           enabled: false
         
-        # Use an existing secret for the admin user.
         admin:
           existingSecret: "grafana-creds"
           userKey: admin-user

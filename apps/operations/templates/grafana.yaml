@@ -40,6 +40,10 @@ spec:
 
         envFromSecret: grafana-datasource-secrets
 
+        ldap:
+          enabled: true
+          existingSecret: grafana-ldap-secrets
+
         datasources:
           datasources.yaml:
             apiVersion: 1

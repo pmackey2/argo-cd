@@ -17,8 +17,18 @@ spec:
     chart: gitlab-runner
     helm:
       values: |
-        podSecurityPolicy:
+        rbac:
+          create: true
+          rules:
+            - resources: ["pods", "secrets"]
+              verbs: ["get", "list", "watch", "create", "patch", "delete"]
+            - apiGroups: [""]
+              resources: ["pods/exec"]
+              verbs: ["create", "patch", "delete"]
+          clusterWideAccess: true
+          podSecurityPolicy:
             enabled: true
+
         gitlabUrl: https://gitlab.chlg.sputnik.ves.is/
         runnerRegistrationToken: "xBzCineHD1UBU-NN9CcS"
 

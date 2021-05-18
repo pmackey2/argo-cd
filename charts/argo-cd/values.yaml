@@ -25,9 +25,6 @@ argo-cd:
           name: github-http
         - url: https://gitlab.chlg.sputnik.ves.is/sputnik/argo-cd-default.git
           name: gitlab.chlg.sputnik.ves.is
-          usernameSecret:
+          sshPrivateKeySecret:
             name: argo-gitlab
-            key: username
-          passwordSecret:
-            name: argo-gitlab
-            key: password
+            key: sshPrivateKey

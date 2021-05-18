@@ -28,8 +28,9 @@ argo-cd:
           sshPrivateKeySecret:
             name: argo-gitlab
             key: sshPrivateKey
-      knownHosts:
-          data:
-            ssh_known_hosts: |
-              gitlab.chlg.sputnik.ves.is ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGnNZhayfVMGkQ57vz4gL6/wtvk0gqB9Itz/zDJZKeARARZBII1pUJvHQfM11ZcnFeNDaotaZlwwvcI2MfZO6Ao=
-              gitlab.chlg.sputnik.ves.is ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHFFaq9opJZ/5KdxzFVDJzWoZ+k6s60qTH1yXdvPGH61
+  configs:
+    knownHosts:
+        data:
+          ssh_known_hosts: |
+            gitlab.chlg.sputnik.ves.is ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGnNZhayfVMGkQ57vz4gL6/wtvk0gqB9Itz/zDJZKeARARZBII1pUJvHQfM11ZcnFeNDaotaZlwwvcI2MfZO6Ao=
+            gitlab.chlg.sputnik.ves.is ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHFFaq9opJZ/5KdxzFVDJzWoZ+k6s60qTH1yXdvPGH61

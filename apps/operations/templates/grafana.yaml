@@ -21,10 +21,11 @@ spec:
             - ReadWriteMany
 
         env:
-          GF_RENDERING_SERVER_URL: http://localhost:8081/render
-          GF_RENDERING_CALLBACK_URL: http://localhost:3000/
-            serviceMonitor:
-              enabled: true
+          GF_RENDERING_SERVER_URL: 'http://localhost:8081/render'
+          GF_RENDERING_CALLBACK_URL: 'http://localhost:3000/''
+
+        serviceMonitor:
+          enabled: true
 
         imageRenderer:
           enabled: truee

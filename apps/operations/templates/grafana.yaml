@@ -21,7 +21,7 @@ spec:
             - ReadWriteMany
 
         serviceMonitor:
-          enabled: true
+          enabled: false
 
         imageRenderer:
           enabled: truee

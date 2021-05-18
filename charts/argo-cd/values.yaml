@@ -23,7 +23,7 @@ argo-cd:
             key: sshPrivateKey
         - url: https://github.com/pmackey2/argo-cd-test.git
           name: github-http
-        - url: https://gitlab.chlg.sputnik.ves.is/sputnik/argo-cd-default.git
+        - url: git@gitlab.chlg.sputnik.ves.is:sputnik/argo-cd-default.git
           name: gitlab.chlg.sputnik.ves.is
           sshPrivateKeySecret:
             name: argo-gitlab

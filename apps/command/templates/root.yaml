@@ -14,7 +14,7 @@ spec:
 
   source:
     path: apps/command/
-    repoURL: https://gitlab.chlg.sputnik.ves.is/sputnik/argo-cd-default.git
+    repoURL: git@gitlab.chlg.sputnik.ves.is:sputnik/argo-cd-default.git  
     targetRevision: HEAD
 
   syncPolicy:

@@ -15,7 +15,7 @@ spec:
 
   source:
     path: charts/argo-cd
-    repoURL: https://gitlab.chlg.sputnik.ves.is/sputnik/argo-cd-default.git
+    repoURL: git@gitlab.chlg.sputnik.ves.is:sputnik/argo-cd-default.git
     targetRevision: HEAD
 
   syncPolicy:

@@ -39,7 +39,7 @@ data:
         method => "SHA1"
         key => "7f637fa4844d20c7eb406ffe5cd350a7"
         concatenate_sources => true
-        target => "[@metadata][fingerprint]"
+        target => ["fingerprint"]
       }
     }
 

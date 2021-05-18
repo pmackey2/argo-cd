@@ -1,0 +1,32 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mongodb
+  namespace: default
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  destination:
+    name: operations
+    namespace: mongodb
+
+  source:
+    chart: mongodb
+    helm:
+      values: |
+        auth:
+          enabled: true
+          existingSecret: mongodb-creds
+    enabled: true
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 4.4.6
+    path: bitnami/mongodb
+
+  syncPolicy:
+    automated:
+
+    syncOptions:
+      - CreateNamespace=true

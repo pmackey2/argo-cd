@@ -19,6 +19,9 @@ spec:
       values: |
         podSecurityPolicy:
             enabled: true
+        gitlabUrl: https://gitlab.chlg.sputnik.ves.is/
+        runnerRegistrationToken: "3xwyc3kpKzQD-N9Q2jx5"
+
     enabled: true
     repoURL: https://charts.gitlab.io
     targetRevision: 0.28.0

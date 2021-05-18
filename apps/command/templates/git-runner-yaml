@@ -1,0 +1,37 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitlab-runner
+  namespace: default
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: gitlab-runner
+
+  source:
+    chart: gitlab-runner
+    helm:
+      values: |
+        podSecurityPolicy:
+            enabled: true
+    enabled: true
+    repoURL: https://charts.gitlab.io
+    targetRevision: 0.28.0
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

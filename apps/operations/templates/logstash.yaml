@@ -14,7 +14,7 @@ spec:
     namespace: logstash
 
   source:
-    repoURL: https://github.com/pmackey2/argo-cd-test.git
+    repoURL: https://gitlab.chlg.sputnik.ves.is/sputnik/argo-cd-default.git
     targetRevision: HEAD
     path: charts/logstash
 

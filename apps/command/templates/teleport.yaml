@@ -16,7 +16,7 @@ spec:
   source:
     enabled: false
     path: charts/teleport-cluster
-    repoURL: https://github.com/pmackey2/argo-cd-test
+    repoURL: https://gitlab.chlg.sputnik.ves.is/sputnik/argo-cd-default.git
     targetRevision: HEAD
 
   syncPolicy:

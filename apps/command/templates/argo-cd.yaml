@@ -17,8 +17,3 @@ spec:
     path: charts/argo-cd
     repoURL: git@gitlab.chlg.sputnik.ves.is:sputnik/argo-cd-default.git
     targetRevision: HEAD
-
-  syncPolicy:
-    automated:
-      prune: false
-      selfHeal: false

@@ -20,7 +20,7 @@ spec:
         podSecurityPolicy:
             enabled: true
         gitlabUrl: https://gitlab.chlg.sputnik.ves.is/
-        runnerRegistrationToken: "3xwyc3kpKzQD-N9Q2jx5"
+        runnerRegistrationToken: "xBzCineHD1UBU-NN9CcS"
 
     enabled: true
     repoURL: https://charts.gitlab.io

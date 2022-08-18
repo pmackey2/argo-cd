@@ -10,19 +10,16 @@ spec:
   project: default
 
   destination:
-    server: {{ .Values.spec.destination.server }}
+    name: in-cluster
     namespace: teleport
 
   source:
     enabled: false
     path: charts/teleport-cluster
-    repoURL: git@gitlab.chlg.sputnik.ves.is:sputnik/argo-cd-default.git
+    repoURL: git@github.com:pmackey2/argo-cd.git
     targetRevision: HEAD
 
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true
     retry:
